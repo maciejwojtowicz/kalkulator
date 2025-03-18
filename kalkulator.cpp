@@ -13,14 +13,14 @@ void podaj_liczby(double& a, double& b) {
 void dodawanie(double& a, double& b,double& wynik,double& mem) {
     podaj_liczby(a,b);
     wynik = a + b;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 }
 
 void odejmowanie(double& a, double& b, double& wynik, double& mem) {
     podaj_liczby(a,b);
     wynik = a - b;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 
 }
@@ -28,7 +28,7 @@ void odejmowanie(double& a, double& b, double& wynik, double& mem) {
 void mnozenie(double& a, double& b, double& wynik, double& mem) {
     podaj_liczby(a,b);
     wynik = a * b;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 
 }
@@ -37,7 +37,7 @@ void dzielenie(double& a, double& b, double& wynik, double& mem) {
     podaj_liczby(a,b);
     if (b == 0) std::cout << "BŁĄD!";
     wynik = a / b;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    if (b != 0) std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 }
 
@@ -45,26 +45,26 @@ void modulo(double& a, double& b, double& wynik, double& mem) {
     podaj_liczby(a,b);
     if (static_cast<int>(b) == 0) std::cout << "BLAD!";
     wynik = static_cast<int>(a) % static_cast<int>(b);
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    if (b != 0) std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 
 }
 
 void mem_add(double& wynik, double& mem) {
     mem += wynik;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 }
 
 void mem_sub(double& wynik, double& mem) {
     mem -= wynik;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 }
 
 void mem_clr(double& wynik, double& mem) {
     mem = 0;
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
 
 }
 
@@ -121,7 +121,7 @@ int main()
     while (n) {
         start(n);
         dzialanie(a, b, n, wynik, mem);
-    }//endl nie działa
+    }
     std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
 
 }
