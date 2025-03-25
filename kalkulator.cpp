@@ -1,11 +1,17 @@
 ﻿#include <iostream>
 
+#define print(X,Y)    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+#define abwm() double& a, double& b,double& wynik,double& mem
+#define memref() double& wynik, double& mem
+#define inp_numbers() double& a, double& b, int& n, int& n_old, double& wynik
+#define switch_nums() double& a,double&b, int& n, int& n_old, double& wynik, double& mem
+
 void start(int& n) {
     std::cout << "\npodaj numer operacji:\n0. stop\n1. dodawanie\n2. odejmowanie\n3. mnozenie\n4. dzielenie\n5. modulo\n6. dodaj do pamieci\n7. odejmij od pamieci\n8. wyczysc pamiec\njezeli wybierzesz dwa razy z rzedu ta sama opcje - za drugim razem a bedzie rowne wynikowi poprzedniej operacji" << std::endl;
     std::cin >> n;
 }
 
-void podaj_liczby(double& a, double& b, int& n, int& n_old, double& wynik) {
+void podaj_liczby(inp_numbers()) {
     std::cout << "podaj dwie liczby";
     if (n_old == n) {
         a = wynik;
@@ -20,49 +26,49 @@ void podaj_liczby(double& a, double& b, int& n, int& n_old, double& wynik) {
     }
 }
 
-void dodawanie(double& a, double& b,double& wynik,double& mem) {
+void dodawanie(abwm()) {
     wynik = a + b;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void odejmowanie(double& a, double& b, double& wynik, double& mem) {
+void odejmowanie(abwm()) {
     wynik = a - b;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void mnozenie(double& a, double& b, double& wynik, double& mem) {
+void mnozenie(abwm()) {
     wynik = a * b;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void dzielenie(double& a, double& b, double& wynik, double& mem) {
+void dzielenie(abwm()) {
     if (b == 0) std::cout << "BŁĄD!";
     wynik = a / b;
-    if (b != 0) std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    if (b != 0) print(wynik,pamiec)
 }
 
-void modulo(double& a, double& b, double& wynik, double& mem) {
+void modulo(abwm()) {
     if (static_cast<int>(b) == 0) std::cout << "BLAD!";
     wynik = static_cast<int>(a) % static_cast<int>(b);
-    if (b != 0) std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    if (b != 0) print(wynik,pamiec)
 }
 
-void mem_add(double& wynik, double& mem) {
+void mem_add(memref()) {
     mem += wynik;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void mem_sub(double& wynik, double& mem) {
+void mem_sub(memref()) {
     mem -= wynik;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void mem_clr(double& wynik, double& mem) {
+void mem_clr(memref()) {
     mem = 0;
-    std::cout << "wynik: " << wynik <<std::endl<< "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
 
-void dzialanie(double& a,double&b, int& n, int& n_old, double& wynik, double& mem) {
+void dzialanie(switch_nums()) {
     switch (n) {
         case 0:
             break;
@@ -121,5 +127,5 @@ int main() {
         start(n);
         dzialanie(a, b, n, n_old, wynik, mem);
     }
-    std::cout << "wynik: " << wynik << "pamiec: " << mem << std::endl;
+    print(wynik,pamiec)
 }
