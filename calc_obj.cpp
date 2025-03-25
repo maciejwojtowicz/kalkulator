@@ -17,15 +17,15 @@ class Calculator {
         return &n;
     }
 
-    double get_wynik() {
-        return wynik;
+    double* get_result() {
+        return& wynik;
     }
 
-    double get_mem() {
-        return mem;
+    double* get_mem() {
+        return& mem;
     }
 
-    void podaj_liczby() {
+    void input_num() {
         std::cout << "podaj dwie liczby";
         if (n_old == n) {
             a = wynik;
@@ -77,69 +77,69 @@ class Calculator {
     }
 };
 
-void start(int* n) {
+void start(int& n) {
     std::cout << "\npodaj numer operacji:\n0. stop\n1. dodawanie\n2. odejmowanie\n3. mnozenie\n4. dzielenie\n5. modulo\n6. dodaj do pamieci\n7. odejmij od pamieci\n8. wyczysc pamiec\njezeli wybierzesz dwa razy z rzedu ta sama opcje - za drugim razem a bedzie rowne wynikowi poprzedniej operacji" << std::endl;
-    std::cin >> *n;
+    std::cin >> n;
 }
 
 int main() {
     Calculator c1;
     int* n = c1.get_n();
     while (*n) {
-        start(n);
+        start(*n);
         switch (*n) {
             case 0:
                 break;
 
             case 1:
-                c1.podaj_liczby();
+                c1.input_num();
                 c1.add();
-                std::cout <<"wynik: " << c1.get_wynik()<<std::endl;
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"wynik: " << *c1.get_result()<<std::endl;
+                std::cout <<"pamiec: " << *c1.get_mem();
                 break;
 
             case 2:
-                c1.podaj_liczby();
+                c1.input_num();
                 c1.sub();
-                std::cout <<"wynik: " << c1.get_wynik()<<std::endl;
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"wynik: " << *c1.get_result()<<std::endl;
+                std::cout <<"pamiec: " << *c1.get_mem();
                 break;
 
             case 3:
-                c1.podaj_liczby();
+                c1.input_num();
                 c1.mult();
-                std::cout <<"wynik: " << c1.get_wynik()<<std::endl;
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"wynik: " << *c1.get_result()<<std::endl;
+                std::cout <<"pamiec: " << *c1.get_mem();
                 break;
 
             case 4:
-                c1.podaj_liczby();
+                c1.input_num();
                 c1.div();
-                std::cout <<"wynik: " << c1.get_wynik()<<std::endl;
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"wynik: " << *c1.get_result()<<std::endl;
+                std::cout <<"pamiec: " << *c1.get_mem();
                 break;
 
             case 5:
-                c1.podaj_liczby();
+                c1.input_num();
                 c1.mod();
-                std::cout <<"wynik: " << c1.get_wynik()<<std::endl;
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"wynik: " << *c1.get_result()<<std::endl;
+                std::cout <<"pamiec: " << *c1.get_mem();
 
             break;
 
             case 6:
                 c1.mem_add();
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"pamiec: " << *c1.get_mem();
             break;
 
             case 7:
                 c1.mem_sub();
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"pamiec: " << *c1.get_mem();
             break;
 
             case 8:
                 c1.mem_clr();
-                std::cout <<"pamiec: " << c1.get_mem();
+                std::cout <<"pamiec: " << *c1.get_mem();
             break;
 
             default:
